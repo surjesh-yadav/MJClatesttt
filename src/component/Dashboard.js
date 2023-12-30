@@ -94,6 +94,7 @@ const Dashboard = () => {
         body: JSON.stringify({ user_id: previewID }),
       });
       const data = await response.json();
+      localStorage.setItem('userData', JSON.stringify(data));
       setUserData(data);
      
     } catch (error) {
@@ -103,6 +104,11 @@ const Dashboard = () => {
   const handleSearch = () => {
     fetchData();
   };
+
+
+
+  
+
 const wallet_address = userData?.data?.wallet_address ;
 
 
@@ -171,11 +177,15 @@ const wallet_address = userData?.data?.wallet_address ;
           body : JSON.stringify({address:Address}),
         })
         let response = await dumy.json();
+
+        localStorage.setItem('userID', JSON.stringify(response.data.user_id));
+
         if(!response){
           // setLoading(true)
         }else{
           setLoading(false)
           setUserRes({...response.data})
+
         }
         
         //console.log(response.data)
@@ -335,8 +345,6 @@ const wallet_address = userData?.data?.wallet_address ;
       useContractRead(contract, "getThePlanCount", [wallet_address , 1000]);
       
       
-
-     
 
   //     toast.success("Tokens Bought Successfully", {
   //       position: toast.POSITION.TOP_CENTER,
@@ -612,11 +620,9 @@ const result1000 = getThePlansCount1000;
                             <button onClick={handleCopyReferralLink}>
                              Copy
                             </button>
-
                     </div>
                     </div>
                   </div>
-
                   <div
                     className="frgx"
                     style={{

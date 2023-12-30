@@ -141,6 +141,11 @@ const Registration = () => {
     fetchedbnbprice();
   }, []);
 
+ 
+  var storedData = localStorage.getItem('userID');
+  var userDataID = JSON.parse(storedData);
+
+
   //read functions
   const address = useAddress();
   const { contract } = useContract(
@@ -265,9 +270,6 @@ const Registration = () => {
 
     const { mutateAsync: DirectStakeJoining, isLoading: isJoiningLoading } =
     useContractWrite(contract, "DirectStakeJoining");
-
-
-    
     const { mutateAsync: stakeTokens, isLoading: isStakeLoading } =
     useContractWrite(contract, "stakeTokens");
 
@@ -281,13 +283,14 @@ const Registration = () => {
       } else {
         ref = referralCode;
       }
-
+    
       console.log(result2);
 
       let usdtAmt = result2;
       //   let usdtAmt = ethers.utils.parseEther(result2);
 
       console.log(usdtAmt);
+      
 
       const data = await buyTokens({
         args: [
@@ -307,7 +310,7 @@ const Registration = () => {
             user_wallet:address,
             buyed_plan:[{amount:selectedValue}],
             parent_wallet_id:referralCode,
-            // user_id: userId
+            user_id: userDataID
           }
         )
       });
@@ -327,6 +330,8 @@ const Registration = () => {
       setBuyTokenLoading(false);
     }
   };
+
+  
 
   const DirectStakeJoinings = async () => {
     setDirectStakeJoiningLoading(true);

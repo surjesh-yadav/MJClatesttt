@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img6 from "../image/svg-image-6.svg";
 import img8 from "../image/svg-image-8.svg";
 import img4 from "../image/svg-image-4.svg";
@@ -66,8 +66,19 @@ const Forsage1 = () => {
     fetchData();
     fetchData2();
   };
+useEffect(()=>{
+  fetchData2();
+})
+ 
+  
+   
+  // Retrieve data from localStorage
+  var storedData = localStorage.getItem('userData');
 
-  const wallet_address = userData?.data?.wallet_address;
+  var userDataReal = JSON.parse(storedData);
+
+
+  const wallet_address = userDataReal?.data?.wallet_address;
 
   const { contract } = useContract(
     "0xc989DdF90f11E12367b66844EFDa0bc05efF0260"

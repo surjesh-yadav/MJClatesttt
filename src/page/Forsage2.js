@@ -53,7 +53,9 @@ const Forsage2 = () => {
     fetchData();
   };
 
-const wallet_address = userData?.data?.wallet_address ;
+  var storedData = localStorage.getItem('userData');
+  var userDataReal = JSON.parse(storedData);
+  const wallet_address = userDataReal?.data?.wallet_address;
 
 
 
