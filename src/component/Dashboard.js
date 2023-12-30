@@ -568,14 +568,14 @@ const result1000 = getThePlansCount1000;
                 <div className="personal_user_left">
                   <div className="unknowuser_img">
                     <span className="unknowUser">
-                      <i className="fa fa-user-circle-o" aria-hidden="true"></i>
+                      <img className="user_logo" src="/logo.svg"/>
                     </span>
                   </div>
 
-                  <div className="id_user">
+                  <div className="id_user right_text">
                     <h1>
                       Insight_Team{" "}
-                      <span className="id_bg">
+                      <span className="id_bg id_user_top">
                         
                           {loading ? "loading" : userRes.user_id}
                       </span>
@@ -591,9 +591,9 @@ const result1000 = getThePlansCount1000;
                   <div className="personal_link">
                     <p>
                       Personal link{" "}
-                      <span className="question_icon">
+                      {/* <span className="question_icon">
                         <i className="fa fa-question" aria-hidden="true"></i>
-                      </span>
+                      </span> */}
                     </p>
 
                     <div className="forsage">
@@ -638,7 +638,7 @@ const result1000 = getThePlansCount1000;
         <div className="partners_card_section">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3">
+              <div className="col-lg-3 col-sm-6 left-box">
                 <div
                   className="teams_all_card Partners1"
                   style={{
@@ -676,7 +676,7 @@ const result1000 = getThePlansCount1000;
                 </div>
               </div>
 
-              <div className="col-lg-3">
+              <div className="col-lg-3 col-sm-6 right-box">
                 <div
                   className="teams_all_card"
                   style={{

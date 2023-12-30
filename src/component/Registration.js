@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import blueflase from "../image/blue-blur2.webp";
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-
+import Loading from './Loading'
 import {
   ConnectWallet,
   useSDK,
@@ -237,12 +237,13 @@ const Registration = () => {
   };
 
   const approveTokens = async () => {
-    try {
-      setApproveTokensLoading(true);
+    setApproveTokensLoading(true);
+    try { 
       let spender = "0xc989DdF90f11E12367b66844EFDa0bc05efF0260"; //contract address
       let approveAmount = ethers.utils.parseEther(spending);
       const data = await approve({ args: [spender, approveAmount] });
       console.info("contract call successs", data);
+      setApproveTokensLoading(false);
       toast.success("Successfully approved tokens!", {
         position: toast.POSITION.TOP_CENTER,
       });
@@ -310,10 +311,12 @@ const Registration = () => {
           }
         )
       });
+      setBuyTokenLoading(false);
     
       toast.success("Tokens Bought Successfully", {
         position: toast.POSITION.TOP_CENTER,
       });
+
     } catch (err) {
       toast.error("You can not buy more than $1000 in one transaction", {
         position: toast.POSITION.TOP_CENTER,
@@ -342,6 +345,8 @@ const Registration = () => {
           usdtAmt, 
         ],
       });
+    setDirectStakeJoiningLoading(false);
+
       console.info("contract call successs", data);
       toast.success("Tokens Bought Successfully", {
         position: toast.POSITION.TOP_CENTER,
@@ -356,8 +361,6 @@ const Registration = () => {
       setDirectStakeJoiningLoading(false);
     }
   };
-
-
 
   const stakeMjcTokens = async () => {
     setDirectStakeJoiningLoading(true);
@@ -377,6 +380,8 @@ const Registration = () => {
           0,
         ],
       });
+    setDirectStakeJoiningLoading(false);
+
       console.info("contract call successs", data);
       toast.success("Tokens Bought Successfully", {
         position: toast.POSITION.TOP_CENTER,
@@ -478,8 +483,8 @@ const Registration = () => {
     // }
   }, []);
 
-  const postData = async () => {
-    const userId = 27;
+  const postData = async (userId) => {
+    // const userId = 27;
     const apiUrl = "http://localhost:3200/v1/alldetails";
 
     try {
@@ -505,7 +510,7 @@ const Registration = () => {
   console.log(response);
 
   useEffect(() => {
-    postData();
+    postData(1167);
   }, []);
 
   const numberOfElements = 12; // Change this to the desired number of elements
@@ -514,7 +519,12 @@ const Registration = () => {
     <div key={index} className="forsage_blue"></div>
   ));
 
-  return (
+
+ 
+console.log("Helo")
+
+  return (  
+    
     <div className="regi_main">
       <div style={{ zIndex: 99999999 }}>
         <ToastContainer />
@@ -549,6 +559,13 @@ const Registration = () => {
             </div>
           </div>
         </div>
+        {ApproveTokensloading && <Loading/> }
+        {BuyTokenLoading && <Loading/> }
+        {directStakeJoiningLoading && <Loading/> }
+        {directStakeJoiningLoading && <Loading/> }
+
+
+
         <div className="registion_from">
           <div className="row">
             <div className="col-lg-6">
@@ -773,6 +790,8 @@ const Registration = () => {
             </div>
           </div>
         </div>
+        
+        
       </div>
     </div>
   );

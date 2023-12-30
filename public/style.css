@@ -268,6 +268,7 @@ img.img21copy {
   background-color: #18191A;
   position: fixed;
   height: 100%;
+  z-index: 1;
   overflow: auto;
 }
 
@@ -711,7 +712,7 @@ span.forsage_info {
 
 .blue_color {
   position: absolute;
-  z-index: -1;
+  /* z-index: -1; */
   right: 1px;
   bottom: 2px;
 }
@@ -952,7 +953,7 @@ a#tems {
 .pre_Id {
   position: fixed;
   top: 11px;
-  z-index: 1;
+  z-index: 2;
   background-color: #242526f7;
   color: white;
   width: 96%;
@@ -985,6 +986,7 @@ input.input_NUmber {
   padding: 8px 10px;
   outline: none;
   color: white;
+  padding-left: 18px;
 }
 
 a.link_table.link_table2 {
@@ -1063,7 +1065,7 @@ img.greenBg2 {
   right: 0;
   border-radius: 36px;
   min-height: 533px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .level_title {
@@ -1398,7 +1400,7 @@ table ,td, th {
 
 
   .part_green_down {
-    width: 35%;
+    width: 100px;
   }
 
   .seemore {
@@ -1794,7 +1796,7 @@ input::-webkit-inner-spin-button {
 .link-copy-input{
     background: transparent;
     border: navajowhite;
-    color: wheat;
+    color: #00e1b7;
     width: 290px;
 }
 .link-copy-input:focus-visible{
@@ -1804,3 +1806,84 @@ input::-webkit-inner-spin-button {
 .forsage_detail_box{
   background: cyan !important;
 }
+
+.spiner-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  }
+
+ 
+  
+
+
+
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+
+  .personal_link p{
+    margin-bottom: 0px;
+  }
+
+  .personal_link{
+    font-family: "Rubik";
+
+  }
+.purch.desktop_button_share button{
+  width: 100%;
+  font-family: 600;
+}
+  .purch.desktop_button_share{
+    margin-top: 16px;
+   
+  }
+
+  .user_logo{
+    width: 120px;
+  }
+
+  .personal_user_left{
+        /* background: #030508; */
+        background-image: url(/profilebg.png);
+        padding: 10px;
+        border-radius: 15px;
+        background-size: cover;
+  }
+ 
+  .id_user_top{
+    border-radius: 10px !important;
+    margin-top: 10px!important;
+    padding: 10px 17px!important;
+  }
+
+  .right_text{
+    margin-top: 14px;
+  }
+
+
+  @media(max-width:767px ){
+    .left-box, .right-box{
+      max-width: 50% !important;
+    }
+  }
+ 
+  .mobile-connect-button{
+    display: flex;
+    gap: 10px;
+  }

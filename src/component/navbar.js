@@ -75,7 +75,8 @@ const navbar = () => {
                             </div>
                         </div>
 
-                        <Link to="/"> <span className='iconnav'><img className="iconnav" src={icon8} alt='icon' /></span>Marathon</Link>
+                        <Link to="/Registration"> <span className='iconnav'><img className="iconnav" src={icon8} alt='icon' /></span>Buy Tokens</Link>
+                        
                         <Link to="/Landing"> <span className='iconnav'><img className="iconnav" src={icon8} alt='icon' /></span>Landing</Link>
                        
                         <Link to="/"> <span className='iconnav'><img className="iconnav" src={icon9} alt='icon' /></span>Social</Link>

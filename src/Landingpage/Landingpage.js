@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './style.css'
 import roadmap1 from '../image/social.png';
 import roadmap2 from '../image/achievements.png';
@@ -20,7 +20,28 @@ import poket_img from '../image/kisspng.svg';
 import bluesedo from '../image/gold-blur.png';
 import plashtfiny from '../image/tiffany-blur.png'
 import { Link } from 'react-router-dom';
+import {
+    ConnectWallet,
+    useSDK,
+    useTokenBalance,
+    useContract,
+    useAddress,
+    useContractRead,
+    useContractWrite,
+  } from "@thirdweb-dev/react";
 const Landingpage = () => {
+
+    const [showButton, setShowButton] = useState(true);
+
+
+    useEffect(() => {
+        const walletElement = document.querySelector('.tw-connect-wallet');
+        if (walletElement) {
+          // If .tw-connect-wallet is present, hide the button
+          setShowButton(false);
+        }
+      }, [showButton]);
+
     return (
 
         <div className='landingpage_main'>
@@ -37,8 +58,9 @@ const Landingpage = () => {
                             <p>Smart Chain</p>
                         </div>
 
-                        <div className='connect_btn'>
-                            <button> <Link to="/Registration">Register </Link></button>
+                        <div className='connect_btn mobile-connect-button'>
+                            {showButton && <button> <Link to="/Registration">Register </Link></button> }
+                            <ConnectWallet/>
                         </div>
                     </div>
                 </div>
